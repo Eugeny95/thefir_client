@@ -25,6 +25,7 @@ class OrderPageState extends State<OrderPage> {
   OrderPageState(this._orderObject);
   @override
   Widget build(BuildContext context) {
+    
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
 
@@ -37,7 +38,7 @@ class OrderPageState extends State<OrderPage> {
               Expanded(
                 child: Text(line.name,
                     style: TextStyle(fontWeight: FontWeight.bold,
-                        color: Color.fromARGB(255, 196, 196, 196),
+                        color: Color.fromARGB(255, 81, 81, 81),
                         fontSize: 22)),
                 flex: 2,
               ),
@@ -45,19 +46,19 @@ class OrderPageState extends State<OrderPage> {
                 child: Text(
                   line.fieldSelection.selectedField!.name + ' мл',
                   textAlign: TextAlign.right,
-                  style: TextStyle(color: Color.fromARGB(255, 255, 255, 255), fontSize: 20),
+                  style: TextStyle(color: Color.fromARGB(255, 97, 97, 97), fontSize: 20),
                 ),
                 flex: 1,
               ),
             ]),
             Row(
-              crossAxisAlignment: CrossAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Expanded(
                     flex: 1,
                     child: Text('Добавки:',
                         style: TextStyle(
-                            color: Color.fromARGB(255, 255, 255, 255),
+                            color: Color.fromARGB(255, 97, 97, 97),
                             //  fontWeight: FontWeight.bold,
                             fontSize: 15))),
                 Expanded(
@@ -70,7 +71,7 @@ class OrderPageState extends State<OrderPage> {
                               ? Text(line.options[index].name,
                                   textAlign: TextAlign.right,
                                   style: TextStyle(
-                                      color: Color.fromARGB(255, 255, 255, 255), fontSize: 15))
+                                      color: Color.fromARGB(255, 97, 97, 97), fontSize: 15))
                               : Text(line.options[index].name,
                                   textAlign: TextAlign.right,
                                   style: TextStyle(
@@ -82,7 +83,7 @@ class OrderPageState extends State<OrderPage> {
               Expanded(
                 child: Text('Количество:',
                     style: TextStyle(
-                        color: Color.fromARGB(255, 255, 255, 255),
+                        color: Color.fromARGB(255, 97, 97, 97),
                         fontSize: 15)),
                 flex: 2,
               ),
@@ -90,7 +91,7 @@ class OrderPageState extends State<OrderPage> {
                 child: Text(
                   line.count.toString(),
                   textAlign: TextAlign.right,
-                  style: TextStyle(color: Color.fromARGB(255, 255, 255, 255), fontSize: 15),
+                  style: TextStyle(color: Color.fromARGB(255, 97, 97, 97), fontSize: 15),
                 ),
                 flex: 1,
               ),
@@ -99,7 +100,7 @@ class OrderPageState extends State<OrderPage> {
               Expanded(
                 child: Text('Стоимость:',
                     style: TextStyle(
-                        color: Color.fromARGB(255, 255, 255, 255),
+                        color: Color.fromARGB(255, 97, 97, 97),
                         fontSize: 15)),
                 flex: 2,
               ),
@@ -107,19 +108,23 @@ class OrderPageState extends State<OrderPage> {
                 child: Text(
                   line.totalCost.toString(),
                   textAlign: TextAlign.right,
-                  style: TextStyle(color: Color.fromARGB(255, 250, 247, 247), fontSize: 15),
+                  style: TextStyle(color: Color.fromARGB(255, 97, 97, 97), fontSize: 15),
                 ),
                 flex: 1,
               ),
             ]),
-            Divider(color: Color.fromARGB(255, 8, 8, 8)),
+            Divider(color: Color.fromARGB(255, 86, 86, 86)),
             SizedBox(
               height: 10,
             ),
           ])));
     }
     return Scaffold(
-      appBar: AppBar(title: Text('Оформление заказа')),
+      appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.black),
+        backgroundColor: Colors.white, 
+        title: Text('Оформление заказа',
+        style: TextStyle(color: Colors.black))),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -134,12 +139,12 @@ class OrderPageState extends State<OrderPage> {
                           ListTile(
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(10),
-                                    topRight: Radius.circular(10),
+                                    topLeft: Radius.circular(1),
+                                    topRight: Radius.circular(1),
                                     bottomRight: Radius.circular(10),
                                     bottomLeft: Radius.circular(10))),
                             title: Text('Детали заказа'),
-                            tileColor: Color.fromARGB(255, 31, 31, 31),
+                            tileColor: Color.fromARGB(255, 219, 219, 219),
                           ),
                           SizedBox(
                             height: 15,
@@ -155,7 +160,7 @@ class OrderPageState extends State<OrderPage> {
                             'Итого: ${_orderObject!.basketObject.total} руб.',
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 249, 249, 249),
+                                color: Color.fromARGB(255, 97, 97, 97),
                                 fontSize: 23),
                           ),
                           SizedBox(
@@ -171,12 +176,12 @@ class OrderPageState extends State<OrderPage> {
                                 Row(children: [
                                   Text('Время готовности:',
                                   style: TextStyle(
-                                        color: Color.fromARGB(255, 255, 255, 255),
+                                        color: Color.fromARGB(255, 97, 97, 97),
                                         fontSize: 18)),
                                   Text(
                                     ' ' + mytime + ' ',
                                     style: TextStyle(
-                                        color: Color.fromARGB(255, 255, 255, 255),
+                                        color: Color.fromARGB(255, 96, 96, 96),
                                         fontSize: 18),
                                   )
                                 ]),
@@ -193,7 +198,7 @@ class OrderPageState extends State<OrderPage> {
                                           minimumSize: Size( height * 0.35,   width * 0.12 ),
                                             ),
                                           onPressed: () async {
-                                            DatePicker.showDateTimePicker(
+                                            DatePicker.showTimePicker(
                                               context,
                                               locale: LocaleType.ru,
                                               onConfirm: (time) {
@@ -207,7 +212,8 @@ class OrderPageState extends State<OrderPage> {
                                               },
                                             );
                                           },
-                                          child: Text('Выбрать время'))
+                                          child: Text('Выбрать время',
+                                          style: TextStyle(color: Colors.black)))
                                     ])
                               ])),
                           Row(
@@ -215,9 +221,9 @@ class OrderPageState extends State<OrderPage> {
                               children: [
                                 Radio(
                                     fillColor: MaterialStateColor.resolveWith(
-                                        (states) => Color.fromARGB(255, 255, 255, 255)),
+                                        (states) => Color.fromARGB(255, 95, 95, 95)),
                                     focusColor: MaterialStateColor.resolveWith(
-                                        (states) => Color.fromARGB(255, 255, 255, 255)),
+                                        (states) => Color.fromARGB(255, 32, 32, 32)),
                                     value: false,
                                     groupValue: valueRadio,
                                     onChanged: (bool? value) {
@@ -229,9 +235,9 @@ class OrderPageState extends State<OrderPage> {
                                 Text('С собой'),
                                 Radio(
                                     fillColor: MaterialStateColor.resolveWith(
-                                        (states) => Color.fromARGB(255, 255, 255, 255)),
+                                        (states) => Color.fromARGB(255, 97, 97, 97)),
                                     focusColor: MaterialStateColor.resolveWith(
-                                        (states) => Color.fromARGB(255, 255, 255, 255)),
+                                        (states) => Color.fromARGB(255, 53, 53, 53)),
                                     value: true,
                                     groupValue: valueRadio,
                                     onChanged: (bool? value) {
@@ -251,7 +257,7 @@ class OrderPageState extends State<OrderPage> {
     ),
       elevation: 5,
       minimumSize: Size( height * 0.43,   width * 0.15 ),
-      backgroundColor: Colors.white,
+      backgroundColor: Color.fromARGB(255, 239, 239, 239),
       ),
             // ignore: prefer_const_constructors
             child: Text('Заказать',

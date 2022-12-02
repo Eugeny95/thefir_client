@@ -13,9 +13,11 @@ import '../utils/Security/Auth.dart';
 class OrderController with ChangeNotifier {
   late IO.Socket socket;
   List<OrderObject> activeOrders = [];
+  List<OrderObject> historyOrders = [];
   void periodicUpdate() {
     Timer(Duration(milliseconds: 30 * 1000), () async {
       getActiveOrders();
+      getHistoryOrders();
       periodicUpdate();
     });
   }
@@ -23,6 +25,9 @@ class OrderController with ChangeNotifier {
   OrderController() {
     periodicUpdate();
   }
+
+  
+
   void getActiveOrders() {
     notifyListeners();
     RestController().sendGetRequest(
@@ -41,6 +46,26 @@ class OrderController with ChangeNotifier {
         data: '?user_id=${Auth().id}');
     notifyListeners();
   }
+
+  void getHistoryOrders() {
+    notifyListeners();
+    RestController().sendGetRequest(
+        onComplete: ({required String data, required int statusCode}) {
+          List<dynamic> json = jsonDecode(data);
+          historyOrders =
+              json.map((e) => OrderObject.fromJson(jsonEncode(e))).toList();
+
+          print('updated');
+          notifyListeners();
+        },
+        onError: ({required int statusCode}) {
+          notifyListeners();
+        },
+        controller: 'history_orders',
+        data: '?user_id=${Auth().id}');
+    notifyListeners();
+  }
+
 
   /// chatModel = box.get('abonents');
 }

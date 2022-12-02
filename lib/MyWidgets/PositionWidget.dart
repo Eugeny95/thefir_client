@@ -65,7 +65,7 @@ class _PositionWidgetState extends State<PositionWidget> {
                           coffe.name,
                           
                         ),
-                        tileColor: Color.fromARGB(135, 20, 20, 20),
+                        tileColor: Color.fromARGB(253, 227, 226, 226),
                       ),
                       SizedBox(
                         height: height * 0.01,
@@ -78,14 +78,14 @@ class _PositionWidgetState extends State<PositionWidget> {
                           Expanded(
                             child: Text('Объем ',
                                 style: TextStyle(
-                                    color: Colors.white,
+                                    color: Color.fromARGB(255, 67, 67, 67),
                                     fontWeight: FontWeight.normal)),
                             flex: 6,
                           ),
                           Expanded(
                             child: Text(
                               coffe.fieldSelection.selectedField!.name + ' мл',
-                              style: TextStyle(color: Colors.white),
+                              style: TextStyle(color: Color.fromARGB(255, 67, 67, 67)),
                             ),
                             flex: 6,
                           ),
@@ -100,14 +100,14 @@ class _PositionWidgetState extends State<PositionWidget> {
                           Expanded(
                             child: Text('Количество ',
                                 style: TextStyle(
-                                    color: Colors.white,
+                                    color: Color.fromARGB(255, 67, 67, 67),
                                     fontWeight: FontWeight.normal)),
                             flex: 6,
                           ),
                           Expanded(
                             child: Text(
                               coffe.count.toString() + ' шт',
-                              style: TextStyle(color: Colors.white),
+                              style: TextStyle(color: Color.fromARGB(255, 67, 67, 67)),
                             ),
                             flex: 6,
                           ),
@@ -122,7 +122,7 @@ class _PositionWidgetState extends State<PositionWidget> {
                           Expanded(
                             child: Text('Добавки ',
                                 style: TextStyle(
-                                    color: Colors.white,
+                                    color: Color.fromARGB(255, 67, 67, 67),
                                     fontWeight: FontWeight.normal)),
                             flex: 6,
                           ),
@@ -139,13 +139,13 @@ class _PositionWidgetState extends State<PositionWidget> {
                           ),
                         ],
                       ),
-                      Divider(color: Colors.black),
+                      Divider(color: Colors.grey),
                       Row(
                         children: [
                           Expanded(
                             child: Text(' ',
                                 style: TextStyle(
-                                    color: Colors.white,
+                                    color: Color.fromARGB(255, 67, 67, 67),
                                     fontWeight: FontWeight.bold)),
                             flex: 1,
                           ),
@@ -155,7 +155,7 @@ class _PositionWidgetState extends State<PositionWidget> {
                                   coffe.totalCost.toString() +
                                   ' руб.',
                               style: TextStyle(
-                                  color: Colors.white,
+                                  color: Color.fromARGB(255, 67, 67, 67),
                                   fontWeight: FontWeight.normal),
                             ),
                             flex: 5,
@@ -178,7 +178,7 @@ class _PositionWidgetState extends State<PositionWidget> {
                         
                         child: Icon(
                           Icons.close_sharp,
-                          color: Colors.white,
+                          color: Color.fromARGB(255, 67, 67, 67),
                           size: 25.0,
                         ),
                         padding: EdgeInsets.all(10.0),

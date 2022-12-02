@@ -14,6 +14,7 @@ import 'package:flutter/services.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
+import 'package:icofont_flutter/icofont_flutter.dart';
 import 'package:page_transition/page_transition.dart';
 import '/pages/HomePage/HomePage.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +28,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'pages/HomePage/HomePage.dart';
 import 'pages/BasketPage/BasketPage.dart';
-
+//я это смог
 void main() async {
   await Hive.initFlutter();
   runApp(MyApp());
@@ -71,14 +72,16 @@ class _MyAppState extends State<MyApp> {
           title: 'Flutter Demo',
           debugShowCheckedModeBanner: false,
           theme: MyTheme().basicTheme(),
-          home: AnimatedSplashScreen(
-                splash: Image.asset("assets/thefir.png"),
-                nextScreen: page,
-                duration: 2000,
-                backgroundColor: Colors.black,
-                splashTransition: SplashTransition.rotationTransition,
-                pageTransitionType: PageTransitionType.fade,
-               )
+          home: page,
+          //AnimatedSplashScreen(
+               //splash: Image.asset("assets/thefir.png"),
+              //   splashIconSize: 200,
+              //   nextScreen: page,
+              //   duration: 2000,
+              //   backgroundColor: Color.fromARGB(255, 255, 255, 255),
+              //   splashTransition: SplashTransition.fadeTransition,
+              //   pageTransitionType: PageTransitionType.fade,
+              // )
         ));
   }
 }
@@ -119,19 +122,19 @@ class MyWidget extends State {
     return Scaffold(
       body: Center(child: Screens[index]),
       bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.white,
+        selectedItemColor: Color.fromARGB(255, 38, 38, 38),
         currentIndex: index,
         onTap: _onItemTapped,
         type: BottomNavigationBarType.fixed,
         items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Главная',
+            icon: Icon(IcoFontIcons.coffeeAlt),
+            label: 'Меню',
           ),
           BottomNavigationBarItem(
             icon: new Stack(children: <Widget>[
               new Icon(
-                Icons.shopping_basket,
+                Icons.shopping_basket_outlined,
               ),
               (Provider.of<BasketObject>(context, listen: true).count != 0)
                   ? Positioned(
@@ -149,11 +152,11 @@ class MyWidget extends State {
             label: 'Корзина',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.list),
-            label: 'Мои заказы',
+            icon: Icon(Icons.history),
+            label: 'История',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
+            icon: Icon(Icons.person_outline),
             label: 'Профиль',
           ),
         ],

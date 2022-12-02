@@ -1,6 +1,8 @@
 import 'package:coffe/controllers/OrdersObject.dart';
 import 'package:coffe/utils/payments/SberAcquiring.dart';
+import '../../MyWidgets/OrderPreview.dart';
 import '../../MyWidgets/PositionWidget.dart';
+import '../../controllers/OrdersController.dart';
 import '/controllers/BasketObject.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -19,24 +21,27 @@ class BasketPageState extends State<BasketPage> {
   @override
   Widget build(BuildContext context) {
     BasketObject basket = Provider.of<BasketObject>(context);
+        OrderController _orderController =  Provider.of<OrderController>(context, listen: true);
+
     List<Widget> positions = [];
+     List<OrderPreview> orders = [];
+    for (int i = 0; i < _orderController.activeOrders.length; i++) {
+      orders.add(OrderPreview(
+        _orderController.activeOrders[i],
+        key: UniqueKey(),
+      ));
+    }
     for (var item in basket.coffePositions) {
       positions.add(PositionWidget(coffe: item, key: UniqueKey()));
     }
     if (basket.coffePositions.isEmpty) {
-      return Scaffold(
-          appBar: AppBar(title: Text('Корзина')),
-          body: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                Text(
-                  'Пока корзина пуста',
-                  style: TextStyle(fontSize: 20),
-                  textAlign: TextAlign.center,
-                )
-              ])
-            ],
+      return  Scaffold(
+          appBar: AppBar(
+            backgroundColor: Colors.white,
+            title: Text('Корзина',
+            style: TextStyle(color: Colors.black))),
+          body: ListView(
+            children: [Column(children: orders,)],
           ));
     } else {
     double height = MediaQuery.of(context).size.height;
@@ -44,7 +49,7 @@ class BasketPageState extends State<BasketPage> {
     double fontSize = width / 25;
       positions.add(Column(
         children: [
-          Divider(color: Colors.black),
+          Divider(color: Color.fromARGB(255, 64, 64, 64)),
           Text('Итого: ' + basket.total.toString(),
           style: TextStyle(fontSize: 20)),
           Padding(padding: EdgeInsets.only(top: height * 0.02)),
@@ -55,7 +60,6 @@ class BasketPageState extends State<BasketPage> {
     ),
       elevation: 5,
       minimumSize: Size( height * 0.85,   width * 0.15 ),
-      backgroundColor: Colors.white
       ),
               onPressed: () {
                 Provider.of<OrderObject>(context, listen: false).basketObject =
@@ -75,9 +79,12 @@ class BasketPageState extends State<BasketPage> {
         ],
       ));
       return Scaffold(
-          appBar: AppBar(title: Text('Корзина')),
+          appBar: AppBar(
+            backgroundColor: Colors.white,
+            title: Text('Корзина',
+            style: TextStyle(color: Colors.black))),
           body: ListView(
-            children: positions,
+            children: [Column(children: positions), Column(children: orders,)],
           ));
     }
     // TODO: implement build

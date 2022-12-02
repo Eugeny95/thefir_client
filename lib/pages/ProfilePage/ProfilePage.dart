@@ -1,7 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:coffe/Dialogs/EditTextDialog.dart';
 import 'package:coffe/MyWidgets/ViewEditText.dart';
 import 'package:coffe/controllers/UserProfileObject.dart';
 import 'package:coffe/main.dart';
+import 'package:coffe/utils/Security/Validator.dart';
+import 'package:icofont_flutter/icofont_flutter.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -28,27 +31,45 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    final userProfile = Provider.of<UserProfile>(context, listen: true);
+    UserProfile userProfile = Provider.of<UserProfile>(context, listen: true);
+    
     rebuildAllChildren(context);
 
     //userProfile.addListener(setState())
     return Stack(
       children: [
         Column(children: [
+          Stack( children: <Widget>[
           Container(
               height: height / 3,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(25),
-                      bottomRight: Radius.circular(25)),
-                  gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [
-                      Color.fromARGB(255, 138, 138, 138),
-                      Color.fromARGB(255, 25, 25, 25),
-                    ],
-                  )),
+               
+                
+                borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(25),
+                    bottomRight: Radius.circular(25)),
+               image: DecorationImage(
+                  image: AssetImage("assets/images/thefirP.png"),
+                  fit: BoxFit.cover,
+                ),
+              )), 
+               Container(
+              height: height / 3,
+              decoration: BoxDecoration(
+                
+                borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(25),
+                    bottomRight: Radius.circular(25)),
+                gradient: LinearGradient(
+                  begin: FractionalOffset.topCenter,
+                  end: FractionalOffset.bottomCenter,
+                  colors: [
+                    Color.fromARGB(50, 0, 0, 0),
+                    Color.fromARGB(255, 255, 255, 255),
+                  ],
+                ),
+                
+              ),
               child: Column(children: [
                 SizedBox(
                   height: height * 0.05,
@@ -58,8 +79,8 @@ class _ProfilePageState extends State<ProfilePage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Padding(padding: EdgeInsets.only(top: height * 0.18)),
-                      Icon(Icons.supervised_user_circle, size: width / 3)
+                      Padding(padding: EdgeInsets.only(top: height * 0.19)),
+                      //Icon(Icons.park_sharp),
                     ]),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -69,28 +90,32 @@ class _ProfilePageState extends State<ProfilePage> {
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             //fontStyle: FontStyle.italic,
-                            fontSize: 22,
-                            color: Colors.white))
+                            fontSize: 27,
+                            color: Color.fromARGB(169, 38, 38, 38)))
                   ],
                 ),
-              ])),
+              ]))]),
+                
+              
+               
+              
           Padding(padding: EdgeInsets.only(top: 150)),
           Container(
             width: width * 0.9,
             child: Column(children: [
               Container(
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(10),
                     border: Border.all(
-                  color: Color.fromARGB(255, 255, 254, 254),
-                  width: 1,
-                )),
+                      color: Color.fromARGB(255, 95, 93, 93),
+                      width: 1,
+                    )),
                 child: IntrinsicHeight(
                     child: Row(
                   children: [
                     Icon(Icons.person, size: 40),
                     VerticalDivider(
-                      color: Colors.white,
+                      color: Color.fromARGB(255, 97, 97, 97),
                       width: 5,
                       thickness: 1,
                     ),
@@ -100,14 +125,26 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
                     Expanded(
                         flex: 1,
-                        child: Container(
+                        child: GestureDetector(
+                          child:Container(
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
+                              borderRadius: BorderRadius.circular(10),
                               border: Border.all(
-                            color: Colors.white,
-                            width: 1,
-                          )),
+                                color: Color.fromARGB(255, 97, 97, 97),
+                                width: 1,
+                              )),
                           child: Icon(Icons.edit, size: 40),
+                        ),
+                        onTap: ()async{
+                            showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return EditTextDialog('Enter name', userProfile.name, (text){userProfile.name=text;
+                        setState(() {
+                          
+                        });});});
+  
+                          },
                         ))
                   ],
                 )),
@@ -117,17 +154,17 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
               Container(
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(10),
                     border: Border.all(
-                  color: Color.fromARGB(255, 255, 254, 254),
-                  width: 1,
-                )),
+                      color: Color.fromARGB(255, 99, 99, 99),
+                      width: 1,
+                    )),
                 child: IntrinsicHeight(
                     child: Row(
                   children: [
                     Icon(Icons.phone_iphone, size: 40),
                     VerticalDivider(
-                      color: Colors.white,
+                      color: Color.fromARGB(255, 97, 97, 97),
                       width: 5,
                       thickness: 1,
                     ),
@@ -137,14 +174,26 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
                     Expanded(
                         flex: 1,
-                        child: Container(
+                        child: GestureDetector(
+                          child: Container(
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
+                              borderRadius: BorderRadius.circular(10),
                               border: Border.all(
-                            color: Colors.white,
-                            width: 1,
-                          )),
+                                color: Color.fromARGB(255, 97, 97, 97),
+                                width: 1,
+                              )),
                           child: Icon(Icons.edit, size: 40),
+                        ),
+                        onTap: ()async{
+                            showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return EditTextDialog('Enter phone', userProfile.phone, (text){userProfile.phone=text;
+                        setState(() {
+                          
+                        });});});
+  
+                          },
                         ))
                   ],
                 )),
@@ -154,17 +203,17 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
               Container(
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(10),
                     border: Border.all(
-                  color: Color.fromARGB(255, 255, 254, 254),
-                  width: 1,
-                )),
+                      color: Color.fromARGB(255, 97, 97, 97),
+                      width: 1,
+                    )),
                 child: IntrinsicHeight(
                     child: Row(
                   children: [
                     Icon(Icons.email, size: 40),
                     VerticalDivider(
-                      color: Colors.white,
+                      color: Color.fromARGB(255, 97, 97, 97),
                       width: 5,
                       thickness: 1,
                     ),
@@ -174,14 +223,25 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
                     Expanded(
                         flex: 1,
-                        child: Container(
+                        child: GestureDetector(child:Container(
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
+                              borderRadius: BorderRadius.circular(10),
                               border: Border.all(
-                            color: Colors.white,
-                            width: 1,
-                          )),
+                                color: Color.fromARGB(255, 97, 97, 97),
+                                width: 1,
+                              )),
                           child: Icon(Icons.edit, size: 40),
+                          ),
+                          onTap: ()async{
+                            showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return EditTextDialog('Enter email', userProfile.email, (text){userProfile.email=text;
+                        setState(() {
+                          
+                        });});});
+  
+                          },
                         ))
                   ],
                 )),
@@ -190,24 +250,50 @@ class _ProfilePageState extends State<ProfilePage> {
                 height: height * 0.02,
               ),
               ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                            shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(12), // <-- Radius
-    ),
-      elevation: 5,
-      minimumSize: Size( height * 0.43,   width * 0.15 ),
-      ),
-                onPressed: () {}, child: Text('Обновить профиль'))
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12), // <-- Radius
+                    ),
+                    elevation: 5,
+                    minimumSize: Size(height * 0.43, width * 0.15),
+                  ),
+                  onPressed: () {
+                    
+                      userProfile.requestUserData();
+
+                    
+                    if (Validator.isPhoneValid(userProfile.phone)!=null){
+                        
+                        const snackBar = SnackBar(content: Text('Enter valid phone'),);
+                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                        return;
+                      }
+                      if (Validator.isEmailValid(userProfile.email)!=null){
+                        
+                        const snackBar = SnackBar(content: Text('Enter valid email'),);
+                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                        return;
+                      }
+                      userProfile.updateProfile();
+
+                    // TODO: validator
+               
+                  },
+                  child: Text('Обновить профиль',
+                      style: TextStyle(color: Color.fromARGB(255, 55, 55, 55)))),
             ]),
           ),
         ]),
         Positioned(
             top: height / 3.4,
-            left: width * 0.05,
+            left: width * 0.10,
             child: Container(
-                width: width * 0.9,
+                width: width * 0.8,
                 child: Card(
-                    elevation: 10,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20.0),
+                    ),
+                    elevation: 20,
                     child: Column(
                       children: [
                         Row(
@@ -215,26 +301,132 @@ class _ProfilePageState extends State<ProfilePage> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                "Бонусный баланс: ",
-                                style: TextStyle(),
-                              ),
-                              Text('${userProfile.bonuses}',
-                                  style: TextStyle(
-                                      color:
-                                          Color.fromARGB(255, 255, 255, 255))),
-                              Text(
-                                "",
-                                style: TextStyle(),
+                                "Бонусная карта",
+                                style: TextStyle(
+                                  color: Color.fromARGB(255, 97, 97, 97),
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ]),
-                        Card(
-                          color: Colors.white,
-                          elevation: 10,
-                          child: QrImage(
-                            data: userProfile.ids.toString(),
-                            version: QrVersions.auto,
-                            size: width * 0.3,
-                          ),
+                        Row(
+                          children: [
+                            SizedBox(
+                              width: width / 50,
+                            ),
+                            Container(
+                                width: width / 7,
+                                height: height / 16,
+                                padding: const EdgeInsets.all(4.0),
+                                margin: const EdgeInsets.symmetric(
+                                    horizontal: 5, vertical: 5),
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(90.0),
+                                    color: userProfile.bonuses>=1?
+                                     Color.fromARGB(232, 235, 223, 176):Color.fromARGB(255, 239, 239, 239)),
+                                child: Icon(IcoFontIcons.coffeeAlt, size: 40)),
+                            SizedBox(
+                              width: width / 50,
+                            ),
+                            Container(
+                                width: width / 7,
+                                height: height / 16,
+                                padding: const EdgeInsets.all(4.0),
+                                margin: const EdgeInsets.symmetric(
+                                    horizontal: 5, vertical: 5),
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(90.0),
+                                    color: userProfile.bonuses>=2?
+                                     Color.fromARGB(232, 235, 223, 176):Color.fromARGB(255, 239, 239, 239)),
+                                child: Icon(IcoFontIcons.coffeeAlt, size: 40)),
+                            SizedBox(
+                              width: width / 50,
+                            ),
+                            Container(
+                                width: width / 7,
+                                height: height / 16,
+                                padding: const EdgeInsets.all(4.0),
+                                margin: const EdgeInsets.symmetric(
+                                    horizontal: 5, vertical: 5),
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(90.0),
+                                    color: userProfile.bonuses>=3?
+                                     Color.fromARGB(232, 235, 223, 176):Color.fromARGB(255, 239, 239, 239)),
+                                child: Icon(IcoFontIcons.coffeeAlt, size: 40)),
+                            SizedBox(
+                              width: width / 50,
+                            ),
+                            Container(
+                                width: width / 7,
+                                height: height / 16,
+                                padding: const EdgeInsets.all(4.0),
+                                margin: const EdgeInsets.symmetric(
+                                    horizontal: 5, vertical: 5),
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(90.0),
+                                    color: userProfile.bonuses>=4?
+                                     Color.fromARGB(232, 235, 223, 176):Color.fromARGB(255, 239, 239, 239)),
+                                child: Icon(IcoFontIcons.coffeeAlt, size: 40)),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            SizedBox(
+                              width: width / 50,
+                            ),
+                            Container(
+                                width: width / 7,
+                                height: height / 16,
+                                padding: const EdgeInsets.all(4.0),
+                                margin: const EdgeInsets.symmetric(
+                                    horizontal: 5, vertical: 5),
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(90.0),
+                                    color: userProfile.bonuses>=5?
+                                     Color.fromARGB(232, 235, 223, 176):Color.fromARGB(255, 239, 239, 239)),
+                                child: Icon(IcoFontIcons.coffeeAlt, size: 40)),
+                            SizedBox(
+                              width: width / 50,
+                            ),
+                            Container(
+                                width: width / 7,
+                                height: height / 16,
+                                padding: const EdgeInsets.all(4.0),
+                                margin: const EdgeInsets.symmetric(
+                                    horizontal: 5, vertical: 5),
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(90.0),
+                                    color: userProfile.bonuses>=6?
+                                     Color.fromARGB(232, 235, 223, 176):Color.fromARGB(255, 239, 239, 239)),
+                                child: Icon(IcoFontIcons.coffeeAlt, size: 40)),
+                            SizedBox(
+                              width: width / 50,
+                            ),
+                            Container(
+                                width: width / 7,
+                                height: height / 16,
+                                padding: const EdgeInsets.all(4.0),
+                                margin: const EdgeInsets.symmetric(
+                                    horizontal: 5, vertical: 5),
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(90.0),
+                                    color: userProfile.bonuses>=7?
+                                     Color.fromARGB(232, 235, 223, 176):Color.fromARGB(255, 239, 239, 239)),
+                                child: Icon(IcoFontIcons.coffeeAlt, size: 40)),
+                            SizedBox(
+                              width: width / 50,
+                            ),
+                            Container(
+                                width: width / 7,
+                                height: height / 16,
+                                padding: const EdgeInsets.all(4.0),
+                                margin: const EdgeInsets.symmetric(
+                                    horizontal: 5, vertical: 5),
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(90.0),
+                                    color: userProfile.bonuses>=8?
+                                     Color.fromARGB(232, 235, 223, 176):Color.fromARGB(255, 239, 239, 239)),
+                                child: Icon(IcoFontIcons.coffeeAlt, size: 40)),
+                          ],
                         ),
                         SizedBox(
                           height: height * 0.02,

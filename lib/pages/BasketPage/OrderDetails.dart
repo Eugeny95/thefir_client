@@ -45,7 +45,7 @@ class OrderDetailsPageState extends State<OrderDetailsPage> {
               Expanded(
                 child: Text(line.name,
                     style: TextStyle(
-                        color: Color.fromARGB(255, 255, 255, 255),
+                        color: Color.fromARGB(255, 68, 68, 68),
                         fontSize: 20)),
                 flex: 2,
               ),
@@ -53,7 +53,7 @@ class OrderDetailsPageState extends State<OrderDetailsPage> {
                 child: Text(
                   line.fieldSelection.selectedField!.name + ' мл',
                   textAlign: TextAlign.right,
-                  style: TextStyle(color: Color.fromARGB(255, 255, 255, 255), fontSize: 20),
+                  style: TextStyle(color: Color.fromARGB(255, 68, 68, 68), fontSize: 20),
                 ),
                 flex: 1,
               ),
@@ -61,11 +61,12 @@ class OrderDetailsPageState extends State<OrderDetailsPage> {
             Row(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
+                
                 Expanded(
                     flex: 1,
                     child: Text('Добавки:',
                         style: TextStyle(
-                            color: Color.fromARGB(255, 255, 255, 255),
+                            color: Color.fromARGB(255, 65, 65, 65),
                             //  fontWeight: FontWeight.bold,
                             fontSize: 15))),
                 Expanded(
@@ -84,13 +85,14 @@ class OrderDetailsPageState extends State<OrderDetailsPage> {
                                   style: TextStyle(
                                       color: Color.fromARGB(255, 255, 255, 255), fontSize: 15));
                         })),
+                
               ],
             ),
             Row(children: [
               Expanded(
                 child: Text('Количество',
                     style: TextStyle(
-                        color: Color.fromARGB(255, 255, 255, 255),
+                        color: Color.fromARGB(255, 67, 67, 67),
                         fontSize: 15)),
                 flex: 2,
               ),
@@ -98,7 +100,7 @@ class OrderDetailsPageState extends State<OrderDetailsPage> {
                 child: Text(
                   line.count.toString(),
                   textAlign: TextAlign.right,
-                  style: TextStyle(color: Color.fromARGB(255, 255, 255, 255), fontSize: 15),
+                  style: TextStyle(color: Color.fromARGB(255, 67, 67, 67), fontSize: 15),
                 ),
                 flex: 1,
               ),
@@ -107,7 +109,7 @@ class OrderDetailsPageState extends State<OrderDetailsPage> {
               Expanded(
                 child: Text('Стоимость',
                     style: TextStyle(
-                        color: Color.fromARGB(255, 255, 255, 255),
+                        color: Color.fromARGB(255, 97, 97, 97),
                         fontSize: 15)),
                 flex: 2,
               ),
@@ -115,7 +117,7 @@ class OrderDetailsPageState extends State<OrderDetailsPage> {
                 child: Text(
                   line.totalCost.toString(),
                   textAlign: TextAlign.right,
-                  style: TextStyle(color: Color.fromARGB(255, 252, 254, 255), fontSize: 15),
+                  style: TextStyle(color: Color.fromARGB(255, 97, 97, 97), fontSize: 15),
                 ),
                 flex: 1,
               ),
@@ -127,7 +129,11 @@ class OrderDetailsPageState extends State<OrderDetailsPage> {
           ])));
     }
     return Scaffold(
-        appBar: AppBar(title: Text('Оформление заказа')),
+        appBar: AppBar(
+          iconTheme: IconThemeData(color: Colors.black),
+          backgroundColor: Colors.white, 
+          title: Text('Оформление заказа',
+           style: TextStyle(color: Colors.black))),
         body: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -147,7 +153,7 @@ class OrderDetailsPageState extends State<OrderDetailsPage> {
                                         bottomRight: Radius.circular(15),
                                         bottomLeft: Radius.circular(15))),
                                 title: Text('Детали заказа'),
-                                tileColor: Color.fromARGB(255, 35, 35, 35),
+                                tileColor: Color.fromARGB(255, 224, 224, 224),
                               ),
                               SizedBox(
                                 height: 15,
@@ -156,13 +162,13 @@ class OrderDetailsPageState extends State<OrderDetailsPage> {
                                 children: coffeLines,
                               ),
                               Divider(
-                                color: Color(0xFF070707),
+                                color: Color.fromARGB(255, 72, 72, 72),
                                 height: 20,
                               ),
                               Text(
                                 'Итого: ${orderObject!.totalCost} руб.',
                                 style: TextStyle(
-                                    color: Color.fromARGB(255, 255, 255, 255),
+                                    color: Color.fromARGB(255, 82, 82, 82),
                                     fontSize: 18),
                               ),
                               SizedBox(
@@ -171,7 +177,7 @@ class OrderDetailsPageState extends State<OrderDetailsPage> {
                               Text(
                                 'Статус: ${orderObject!.isAccepted ? 'Заказ принят' : 'Ожидает подвержения'}',
                                 style: TextStyle(
-                                    color: Color.fromARGB(255, 255, 255, 255),
+                                    color: Color.fromARGB(255, 97, 97, 97),
                                     fontSize: 20),
                               ),
                               SizedBox(

@@ -32,16 +32,16 @@ class _LoginPageState extends State<LoginPage> {
           SliverAppBar(
           pinned: false,
           snap: false,
-          floating: true,
+          floating: false,
           expandedHeight: height / 3.5,
+          backgroundColor: Colors.white,
           flexibleSpace: Stack(children: [
             Positioned(
                 child: FlexibleSpaceBar(
-                  background: CachedNetworkImage(
-                      fit: BoxFit.fitWidth,
-                      imageUrl:
-                          'https://gorodskoyportal.ru/voronezh/pictures/places/39539/39539.jpg?1580901661'),
-                ),
+                  background: FittedBox(
+  child: Image.asset("assets/images/fon.png"),
+  fit: BoxFit.fill,
+)),
                 top: 0,
                 left: 0,
                 right: 0,
@@ -56,8 +56,8 @@ class _LoginPageState extends State<LoginPage> {
                         begin: FractionalOffset.topCenter,
                         end: FractionalOffset.bottomCenter,
                         colors: [
-                          Color.fromARGB(255, 8, 8, 8).withOpacity(0.0),
-                          MyTheme().kBackgroundColor.withOpacity(1.0),
+                          Color.fromARGB(126, 255, 255, 255).withOpacity(0.0),
+                          Color.fromARGB(21, 255, 255, 255).withOpacity(1.0),
                         ],
                       )),
                     )),
@@ -72,20 +72,20 @@ class _LoginPageState extends State<LoginPage> {
               width: width,
               height: height,
               decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 7, 7, 7),
+                  color: Color.fromARGB(255, 100, 100, 100),
                   gradient: LinearGradient(
                     begin: FractionalOffset.topCenter,
                     end: FractionalOffset.bottomCenter,
                     colors: [
-                      Color.fromARGB(255, 0, 0, 0).withOpacity(0.0),
-                      Color.fromARGB(255, 255, 255, 255).withOpacity(0.0),
+                      Color.fromARGB(129, 0, 0, 0).withOpacity(0.0),
+                      Color.fromARGB(43, 255, 255, 255).withOpacity(0.0),
                     ],
                   )),
               child:
                   Column(mainAxisAlignment: MainAxisAlignment.start, children: [
                 Text('Вход',
                     style: TextStyle(
-                        color: Color.fromARGB(255, 255, 255, 255),
+                        color: Color.fromARGB(255, 77, 77, 77),
                         fontSize: 28)),
                 Padding(padding: EdgeInsets.only(top: height * 0.01)),
                 SizedBox(
@@ -98,7 +98,7 @@ class _LoginPageState extends State<LoginPage> {
                       width: width * 0.85,
                       child: Column(children: [
                         TextFormField(
-                          cursorColor: Colors.white,
+                          cursorColor: Color.fromARGB(255, 77, 77, 77),
                           //controller: TextEditingController()..text = dateTime,
 
                           //initialValue: dateTime,
@@ -112,23 +112,23 @@ class _LoginPageState extends State<LoginPage> {
                             login = value;
                           },
                           decoration: InputDecoration(
-                            fillColor: Colors.white,
-                            focusColor: Color.fromARGB(255, 47, 47, 47),
+                            fillColor: Color.fromARGB(255, 77, 77, 77),
+                            focusColor: Color.fromARGB(255, 77, 77, 77),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10)),
                               focusedBorder: 
                               OutlineInputBorder( 
                                 borderRadius: BorderRadius.circular(10),
-                                borderSide: BorderSide(color: Colors.white,
+                                borderSide: BorderSide(color: Color.fromARGB(255, 77, 77, 77),
                                 width: 2.0)),
-                            prefixIcon: Icon(Icons.phone_iphone, color: Colors.white),
+                            prefixIcon: Icon(Icons.phone_iphone, color: Color.fromARGB(255, 94, 94, 94)),
                               labelText: 'Телефон',
                               labelStyle: TextStyle(
-                                color: Colors.white)),
+                                color: Color.fromARGB(255, 77, 77, 77))),
                         ),
                         Padding(padding: EdgeInsets.only(top: height * 0.03)),
                         TextFormField(
-                          cursorColor: Colors.white,
+                          cursorColor: Color.fromARGB(255, 97, 97, 97),
                           //controller: TextEditingController()..text = dateTime,
                           obscureText: true,
                           //initialValue: dateTime,
@@ -138,19 +138,19 @@ class _LoginPageState extends State<LoginPage> {
                             password = value;
                           },
                           decoration: InputDecoration(
-                            fillColor: Colors.white,
-                            focusColor: Color.fromARGB(255, 47, 47, 47),
+                            fillColor: Color.fromARGB(255, 97, 97, 97),
+                            focusColor: Color.fromARGB(255, 97, 97, 97),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10)),
                               focusedBorder: 
                               OutlineInputBorder( 
                                 borderRadius: BorderRadius.circular(10),
-                                borderSide: BorderSide(color: Colors.white,
+                                borderSide: BorderSide(color: Color.fromARGB(255, 97, 97, 97),
                                 width: 2.0)),
-                            prefixIcon: Icon(Icons.key, color: Colors.white),
+                            prefixIcon: Icon(Icons.key, color: Color.fromARGB(255, 97, 97, 97)),
                             labelText: 'Пароль',
                             labelStyle: TextStyle(
-                                color: Colors.white)),
+                                color: Color.fromARGB(255, 97, 97, 97))),
                           ),
                         Text(status, style: TextStyle(color: Colors.red)),
                         Padding(padding: EdgeInsets.only(top: height * 0.01)),
@@ -171,13 +171,28 @@ class _LoginPageState extends State<LoginPage> {
                             },
                             child: Text('Войти', 
                             style: TextStyle(
-                                color: Colors.white, fontSize: 16))),
+                                color: Colors.black, fontSize: 16))),
                         Padding(padding: EdgeInsets.only(top: height * 0.02)),
                         TextButton(
                           // ignore: prefer_const_constructors
-                         child: Text('Зарегестрироваться',
+                         child: Text('Зарегистрироваться',
                           style: TextStyle(
-                                color: Colors.white, fontSize: 14)),
+                                color: Color.fromARGB(255, 97, 97, 97), fontSize: 14)),
+                          onPressed: () {
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return RegisterDialog();
+                              },
+                            );
+                          },
+                        ),
+                        Padding(padding: EdgeInsets.only(top: height * 0.02)),
+                        TextButton(
+                          // ignore: prefer_const_constructors
+                         child: Text('Забыли пароль?',
+                          style: TextStyle(
+                                color: Color.fromARGB(255, 97, 97, 97), fontSize: 14)),
                           onPressed: () {
                             showDialog(
                               context: context,

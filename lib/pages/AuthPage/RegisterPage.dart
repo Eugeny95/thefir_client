@@ -41,7 +41,7 @@ class RegisterDialogState extends State<RegisterDialog> {
                     children: [
                       Padding(padding: EdgeInsets.only(top: height * 0.03)),
                       TextFormField(
-                        cursorColor: Colors.white,
+                        cursorColor: Color.fromARGB(255, 97, 97, 97),
                         validator: (value) {},
                         onChanged: (String value) {
                           name = value;
@@ -52,16 +52,16 @@ class RegisterDialogState extends State<RegisterDialog> {
                               focusedBorder: 
                               OutlineInputBorder( 
                                 borderRadius: BorderRadius.circular(10),
-                                borderSide: BorderSide(color: Colors.white,
+                                borderSide: BorderSide(color: Color.fromARGB(255, 97, 97, 97),
                                 width: 2.0)),
-                          prefixIcon: Icon(Icons.person_add,color: Colors.white),
+                          prefixIcon: Icon(Icons.person_add,color: Color.fromARGB(255, 97, 97, 97)),
                           labelText: 'Имя',
                         labelStyle: TextStyle(
-                                color: Colors.white)),
+                                color: Color.fromARGB(255, 97, 97, 97))),
                       ),
                       Padding(padding: EdgeInsets.only(top: height * 0.03)),
                       TextFormField(
-                        cursorColor: Colors.white,
+                        cursorColor: Color.fromARGB(255, 104, 103, 103),
                         keyboardType: TextInputType.number,
                         inputFormatters: <TextInputFormatter>[
                           FilteringTextInputFormatter.allow(RegExp(r'[0-9.,]'))
@@ -76,17 +76,17 @@ class RegisterDialogState extends State<RegisterDialog> {
                               focusedBorder: 
                               OutlineInputBorder( 
                                 borderRadius: BorderRadius.circular(10),
-                                borderSide: BorderSide(color: Colors.white,
+                                borderSide: BorderSide(color: Color.fromARGB(255, 97, 97, 97),
                                 width: 2.0)),
-                          prefixIcon: Icon(Icons.phone_iphone, color: Colors.white),
+                          prefixIcon: Icon(Icons.phone_iphone, color: Color.fromARGB(255, 97, 97, 97)),
                           labelText:
                               'Телефон',
                         labelStyle: TextStyle(
-                                color: Colors.white)),
+                                color: Color.fromARGB(255, 97, 97, 97))),
                       ),
                       Padding(padding: EdgeInsets.only(top: height * 0.03)),
                       TextFormField(
-                        cursorColor: Colors.white,
+                        cursorColor: Color.fromARGB(255, 97, 97, 97),
                         //controller: TextEditingController()..text = dateTime,
 
                         //initialValue: dateTime,
@@ -100,16 +100,16 @@ class RegisterDialogState extends State<RegisterDialog> {
                               focusedBorder: 
                               OutlineInputBorder( 
                                 borderRadius: BorderRadius.circular(10),
-                                borderSide: BorderSide(color: Colors.white,
+                                borderSide: BorderSide(color: Color.fromARGB(255, 97, 97, 97),
                                 width: 2.0)),
-                          prefixIcon: Icon(Icons.mail, color: Colors.white),
+                          prefixIcon: Icon(Icons.mail, color: Color.fromARGB(255, 97, 97, 97)),
                           labelText: 'Email',
                         labelStyle: TextStyle(
-                                color: Colors.white)),
+                                color: Color.fromARGB(255, 97, 97, 97))),
                       ),
                       Padding(padding: EdgeInsets.only(top: height * 0.03)),
                       TextFormField(
-                        cursorColor: Colors.white,
+                        cursorColor: Color.fromARGB(255, 97, 97, 97),
                         //controller: TextEditingController()..text = dateTime,
 
                         //initialValue: dateTime,
@@ -124,12 +124,12 @@ class RegisterDialogState extends State<RegisterDialog> {
                               focusedBorder: 
                               OutlineInputBorder( 
                                 borderRadius: BorderRadius.circular(10),
-                                borderSide: BorderSide(color: Colors.white,
+                                borderSide: BorderSide(color: Color.fromARGB(255, 97, 97, 97),
                                 width: 2.0)),
-                          prefixIcon: Icon(Icons.key, color: Colors.white),
+                          prefixIcon: Icon(Icons.key, color: Color.fromARGB(255, 97, 97, 97)),
                           labelText: 'Пароль',
                             labelStyle: TextStyle(
-                                color: Colors.white)),
+                                color: Color.fromARGB(255, 97, 97, 97))),
                       ),
                       Text(
                         status,
@@ -170,13 +170,15 @@ class RegisterDialogState extends State<RegisterDialog> {
                                 controller: 'client',
                                 data: data);
                           },
-                          child: Text('Зарегестрироваться')),
+                          child: Text('Зарегестрироваться',
+                          style: TextStyle(
+                                color: Color.fromARGB(255, 42, 42, 42)))),
                       Padding(padding: EdgeInsets.only(top: height * 0.02)),
                       TextButton(
                         child: Text(
                           'Отмена',
                           style: TextStyle(
-                                color: Colors.white, fontSize: 14)),
+                                color: Color.fromARGB(255, 42, 42, 42), fontSize: 14)),
                         onPressed: () {
                           Navigator.pop(context);
                         },

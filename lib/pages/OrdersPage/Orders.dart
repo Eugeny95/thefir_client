@@ -21,7 +21,7 @@ class _OrderPageState extends State<OrderPage> {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     List<OrderPreview> orders = [];
-    for (int i = 0; i < _orderController.activeOrders.length; i++) {
+    for (int i = 0; i < _orderController.historyOrders.length; i++) {
       orders.add(OrderPreview(
         _orderController.activeOrders[i],
         key: UniqueKey(),
@@ -29,7 +29,9 @@ class _OrderPageState extends State<OrderPage> {
     }
     return Scaffold(
         appBar: AppBar(
-          title: Text('Мои заказы'),
+          backgroundColor: Colors.white,
+          title: Text('История заказов',
+          style: TextStyle(color: Colors.black)),
         ),
         body: ListView(children: orders));
   }

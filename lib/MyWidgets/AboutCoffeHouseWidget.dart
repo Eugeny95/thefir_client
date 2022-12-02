@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:coffe/controllers/CoffeHouseObject.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../pages/HomePage/MapPage.dart';
 
@@ -21,7 +22,7 @@ class AboutCoffeHouseWidget extends StatelessWidget {
         ),
         semanticContainer: true,
         // clipBehavior: Clip.antiAliasWithSaveLayer,
-        elevation: 60,
+        elevation: 6,
         child: Column(children: [
           ListTile(
               shape: RoundedRectangleBorder(
@@ -31,50 +32,131 @@ class AboutCoffeHouseWidget extends StatelessWidget {
                 //  bottomRight: Radius.circular(15),
                 // bottomLeft: Radius.circular(15))
               )),
-              tileColor: Colors.grey[850],
+              tileColor: Color.fromARGB(255, 221, 221, 221),
               title: Column(children: [
                 Row(children: [
+                  //GestureDetector(
+                     // child: Text("PRESS"),
+                      //onTap: () async {
+                       // print("object");
+                     // }),
                   Text(
-                    'Время работы:',
-                    style: TextStyle(
-                        fontWeight: FontWeight.normal),
+                    'Thefir coffe',
+                    style: TextStyle(fontWeight: FontWeight.bold,
+                    color: Color.fromARGB(255, 46, 46, 46),
+                    fontSize: 20),
                   ),
                 ]),
                 Row(children: [
                   Text(
-                    ' Будни (Пн-Пт) 10:00-22:00',
-                    style: TextStyle(
-                        fontWeight: FontWeight.normal),
+                    'Воронеж, Никитинская улица, 42',
+                    style: TextStyle(fontWeight: FontWeight.normal,
+                    color: Color.fromARGB(255, 97, 97, 97)),
                   ),
                 ]),
+                Padding(padding: EdgeInsets.only(top: height * 0.005)),
                 Row(children: [
-                  Text(
-                    ' Выходные (Сб-Вс) 11:00-22:00',
-                    style: TextStyle(
-                        fontWeight: FontWeight.normal),
-                  ),
-                  
+                GestureDetector(
+                          child: Text("89304141844",
+                          style: (TextStyle(color: Color.fromARGB(255, 57, 57, 57),
+                          fontWeight: FontWeight.w500,
+                          fontSize: 15)),),
+                          onTap: () async {
+                            final url =
+                                "tel://89304141844";
+                            if (await canLaunch(url)) {
+                              await launch(
+                                url,
+                              );
+                            }
+                          }),
                 ])
               ])),
           GestureDetector(
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => MapPage()));
-              },
-              child: CachedNetworkImage(
-                imageUrl: 'http://185.119.58.234/place.png',
-                imageBuilder: (context, imageProvider) => Container(
-                  width: width - (width * 0.01),
-                  height: height / 6.5,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    image: DecorationImage(
-                        image: imageProvider, fit: BoxFit.cover),
-                  ),
-                ),
-                placeholder: (context, url) => CircularProgressIndicator(),
-                errorWidget: (context, url, error) => Icon(Icons.error),
-              )),
+            onTap: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => MapPage()));
+            },
+            child: Container(
+              width: width - (width * 0.01),
+              height: height / 10,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(0),
+                    topRight: Radius.circular(0),
+                    bottomRight: Radius.circular(10),
+                    bottomLeft: Radius.circular(10)),
+                color: Color.fromARGB(90, 156, 156, 156),
+              ),
+              child: Column(children: [
+                Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(padding: EdgeInsets.only(top: height * 0.02)),
+                      Text(
+                        "Оставьте отзыв о нашем заведении",
+                        style: TextStyle(
+                          color: Color.fromARGB(117, 51, 50, 50),
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ]),
+                Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(padding: EdgeInsets.only(top: height * 0.06)),
+                      GestureDetector(
+                          child: Container(
+                              width: width / 2.3,
+                              height: height / 22,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Color.fromARGB(255, 255, 255, 255),
+                                image: DecorationImage(
+                                    image:
+                                        AssetImage("assets/images/yandex.png"),
+                                    fit: BoxFit.cover),
+                              ),
+                              child: Text("")),
+                          onTap: () async {
+                            final url =
+                                "https://yandex.ru/maps/org/thefir_coffee/87155301425/reviews";
+                            if (await canLaunch(url)) {
+                              await launch(
+                                url,
+                              );
+                            }
+                          }),
+                      SizedBox(
+                        width: width / 30,
+                      ),
+                      GestureDetector(
+                          child: Container(
+                              width: width / 2.3,
+                              height: height / 22,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Colors.black,
+                                image: DecorationImage(
+                                    image: AssetImage("assets/images/2GIS.png"),
+                                    fit: BoxFit.cover),
+                              ),
+                              child: Text("")),
+                          onTap: () async {
+                            final url =
+                                "https://2gis.ru/voronezh/firm/70000001030259241/tab/reviews?writeReview";
+                            if (await canLaunch(url)) {
+                              await launch(
+                                url,
+                              );
+                            }
+                          }),
+                    ]),
+              ]),
+            ),
+          ),
         ]));
   }
 }

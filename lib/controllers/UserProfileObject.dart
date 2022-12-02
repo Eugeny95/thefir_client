@@ -11,15 +11,30 @@ class UserProfile with ChangeNotifier {
   String phone = '';
   String qr = '';
   double bonuses = 0.0;
-
+  void updateProfile(){
+    RestController().sendPutRequest(
+        onComplete: ({required String data, required int statusCode}) {
+          
+        },
+        onError: ({required int statusCode}) {
+          notifyListeners();
+        },
+        controller: 'client',
+        data: toJson(),
+        accessToken: Auth().accessToken);
+    notifyListeners();
+  }
   void requestUserData() {
+    
     RestController().sendGetRequest(
         onComplete: ({required String data, required int statusCode}) {
-          fromJson(data);
           print('profile');
+          fromJson(data);
+          
           notifyListeners();
         },
         onError: ({required int statusCode}) {
+          print('error');
           notifyListeners();
         },
         controller: 'client',
@@ -28,7 +43,9 @@ class UserProfile with ChangeNotifier {
     notifyListeners();
   }
 
-  UserProfile() {}
+  UserProfile() {
+    requestUserData();
+  }
 
   String toJson() {
     Map<String, String> data = {};
@@ -39,11 +56,14 @@ class UserProfile with ChangeNotifier {
   }
 
   fromJson(var data) {
+    print('debug');
     Map<String, dynamic> json = jsonDecode(data);
+
     ids = json['id'];
     name = json['firstName'];
     email = json['email'];
     bonuses = json['bonuses'];
+    print('bunuses $bonuses');
     qr = json['id'].toString();
     phone = json['phone'];
     print('sucess');

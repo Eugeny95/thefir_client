@@ -5,6 +5,7 @@ import 'package:coffe/controllers/DishObject.dart';
 
 import 'package:coffe/utils/Configuration/ThemeData.dart';
 import 'package:coffe/utils/DataStorage/KeyStorage.dart';
+import '../../Dialogs/Notifications.dart';
 import '/MyWidgets/Carousel.dart';
 import '../../MyWidgets/MainCoffeViewWidget.dart';
 import '/controllers/CoffeHouseObject.dart';
@@ -62,13 +63,17 @@ class _HomePageState extends State<HomePage> {
           pinned:false,
           snap: false,
           floating: false,
-          expandedHeight: height / 3.5,
+          expandedHeight: height / 3.7,
+          backgroundColor: Colors.white,
           flexibleSpace: Stack(children: [
             Positioned(
                 child: FlexibleSpaceBar(
                   title: Text(
-                    Provider.of<CoffeHouse>(context, listen: true).name,
-                    style: MyTheme().thefirNameStyle,
+                    "#thefir",
+                    style: TextStyle(
+                    fontSize: 21,
+                    color: Colors.white,
+                  ),
                   ),
                   background: Carousel(),
                 ),
@@ -78,10 +83,10 @@ class _HomePageState extends State<HomePage> {
                 bottom: 0),
             Positioned(
               child: Container(
-                height: 10,
+                height: 15,
                 //child: Card(),
                 decoration: BoxDecoration(
-                  color: Colors.grey[850],
+                  color: Color.fromARGB(255, 234, 234, 234),
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(25),
                       topRight: Radius.circular(25)),
@@ -91,52 +96,73 @@ class _HomePageState extends State<HomePage> {
               right: 0,
               left: 0,
             ),
+            Positioned(
+              child: IconButton(
+                  icon: Icon(Icons.notifications,
+                  size: 30,
+                  color: Colors.white),
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return PushDialog(
+                            // Provider.of<CoffeHouse>(context, listen: true)
+                            //     .photos
+                            );
+                      },
+                    );
+                  }),
+              top: 30,
+              right: 10,
+            ),
           ])),
-      SliverList(
+      SliverList( 
+        
         key: focusKey,
         delegate: SliverChildListDelegate(
           [
             Align(
                 alignment: Alignment.center, //or choose another Alignment
-                child: SizedBox(
+                child: Container(
+                  color: Color.fromARGB(255, 234, 234, 234),
                     width: width - (0.01 * width),
                     child: AboutCoffeHouseWidget(
                         Provider.of<CoffeHouse>(context, listen: true)))),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(
-                    width: width / 2.2,
-                    child: ElevatedButton(
-                        style: ButtonStyle(
-                            backgroundColor: index == 0
-                                ? MaterialStateProperty.all(Colors.grey[700])
-                                : MaterialStateProperty.all(
-                                    Color.fromARGB(255, 37, 37, 19))),
-                        onPressed: () {
-                          setState(() {
-                            index = 0;
-                            print(index);
-                          });
-                        },
-                        child: Text('Напитки'))),
-                SizedBox(
-                    width: width / 2,
-                    child: ElevatedButton(
-                        style: ButtonStyle(
-                          backgroundColor: index == 1
-                              ? MaterialStateProperty.all(Colors.grey[700])
-                              : MaterialStateProperty.all(
-                                  Color.fromARGB(255, 37, 37, 19)),
-                        ),
-                        onPressed: () {
-                          setState(() {
-                            index = 1;
-                          });
-                        },
-                        child: Text('Кондитерка'))),
-              ],
-            ),
+            //Row(
+             // mainAxisAlignment: MainAxisAlignment.center,
+             // children: [
+               // SizedBox(
+                   // width: width / 2.2,
+                   // child: ElevatedButton(
+                       // style: ButtonStyle(
+                           // backgroundColor: index == 0
+                             //   ? MaterialStateProperty.all(Colors.grey[300])
+                              //  : MaterialStateProperty.all(
+                                //    Color.fromARGB(255, 37, 37, 19))),
+                       // onPressed: () {
+                         // setState(() {
+                          //  index = 0;
+                          //  print(index);
+                         // });
+                       // },
+                        //child: Text('Напитки'))),
+               // SizedBox(
+                   // width: width / 2,
+                   // child: ElevatedButton(
+                       // style: ButtonStyle(
+                         // backgroundColor: index == 1
+                             // ? MaterialStateProperty.all(Colors.grey[700])
+                             // : MaterialStateProperty.all(
+                               //   Color.fromARGB(255, 37, 37, 19)),
+                        //),
+                        //onPressed: () {
+                         // setState(() {
+                            //index = 1;
+                         // });
+                        //},
+                        //child: Text('Кондитерка'))),
+             // ],
+            //),
             index == 0
                 ? Column(children: cofWidget)
                 : Column(children: cakeWidget)

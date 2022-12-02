@@ -42,6 +42,7 @@ class SelectDishDialogState extends State<SelectDishDialog> {
         ),
         Text(dish.options[i].price.toString()),
         Checkbox(
+          activeColor: Colors.red,
           value: dish.options[i].isSelected,
           onChanged: (value) {
             setState(() {
@@ -60,9 +61,9 @@ class SelectDishDialogState extends State<SelectDishDialog> {
         ),
         Text(volume.price.toString()),
         Radio(
-            fillColor: MaterialStateColor.resolveWith((states) => Colors.white),
+            fillColor: MaterialStateColor.resolveWith((states) => Color.fromARGB(255, 69, 69, 69)),
             focusColor:
-                MaterialStateColor.resolveWith((states) => Colors.white),
+                MaterialStateColor.resolveWith((states) => Color.fromARGB(255, 69, 69, 69)),
             value: volume,
             groupValue: dish.fieldSelection.selectedField,
             onChanged: (Option? value) {
@@ -122,7 +123,7 @@ class SelectDishDialogState extends State<SelectDishDialog> {
               dish.category == 'coffe'
                   ? Text(
                       'Доступные объемы',
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      style: TextStyle(fontWeight: FontWeight.bold, color: Color.fromARGB(255, 69, 69, 69)),
                     )
                   : Text(
                       'Масса блюда',
@@ -134,16 +135,16 @@ class SelectDishDialogState extends State<SelectDishDialog> {
                   child: dish.category == 'coffe'
                       ? Text('Объем, мл',
                           style:
-                              TextStyle(color: Colors.white, fontSize: fontSize))
+                              TextStyle(color: Color.fromARGB(255, 69, 69, 69), fontSize: fontSize))
                       : Text('Масса, г',
                           style:
-                              TextStyle(color: Colors.white, fontSize: fontSize)),
+                              TextStyle(color: Color.fromARGB(255, 69, 69, 69), fontSize: fontSize)),
                   flex: 6,
                 ),
                 Expanded(
                   child: Text(
                     'Цена,руб',
-                    style: TextStyle(color: Colors.white, fontSize: fontSize),
+                    style: TextStyle(color: Color.fromARGB(255, 69, 69, 69), fontSize: fontSize),
                   ),
                   flex: 2,
                 ),
@@ -163,14 +164,14 @@ class SelectDishDialogState extends State<SelectDishDialog> {
                       Expanded(
                         child: Text('Название добавки',
                             style: TextStyle(
-                                color: Colors.white, fontSize: fontSize)),
+                                color: Color.fromARGB(255, 69, 69, 69), fontSize: fontSize)),
                         flex: 6,
                       ),
                       Expanded(
                         child: Text(
                           'Цена,руб',
                           style:
-                              TextStyle(color: Colors.white, fontSize: fontSize),
+                              TextStyle(color: Color.fromARGB(255, 69, 69, 69), fontSize: fontSize),
                         ),
                         flex: 2,
                       ),
@@ -196,7 +197,8 @@ class SelectDishDialogState extends State<SelectDishDialog> {
                         .addCoffe(dish);
                     Navigator.pop(context);
                   },
-                  child: Text('Добавить в корзину')),
+                  child: Text('Добавить в корзину',
+                  style: TextStyle(color: Color.fromARGB(255, 69, 69, 69)),)),
             ]))
           ]),
         ),

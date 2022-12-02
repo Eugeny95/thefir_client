@@ -10,7 +10,7 @@ class MyTheme {
     return _myTheme;
   }
   MyTheme._instance();
-  MaterialColor primarySwatch = Colors.blue;
+  Color primarySwatch = Color.fromARGB(255, 94, 94, 94);
   TextStyle text1Style = TextStyle(fontSize: 36);
   static const LargeTextSize = 26.0;
   static const MediumTextSize = 20.0;
@@ -19,38 +19,38 @@ class MyTheme {
   static const String FontNameDefault = 'PoiterOne';
   static const String FontNameTitle = 'Montserrat';
 
-  Color kPrimaryColor = Color.fromARGB(255, 48, 49, 53);
+  Color kPrimaryColor = Color.fromARGB(255, 255, 255, 255);
 //Color kPrimaryColor = Color(0xFFEC407A);
-  Color kSecondaryColor = Color.fromARGB(255, 248, 235, 235);
+  Color kSecondaryColor = Color.fromARGB(255, 97, 97, 97);
 // Color kSecondaryColor = Color(0xFFD6D6D6);
-  Color kBackgroundColor = Color(0xFF28292E);
+  Color kBackgroundColor = Color.fromARGB(255, 255, 255, 255);
 
 //Color kAccentColor = Color(0xFF8FECFF);
-  Color kAccentColor = Colors.white;
+  Color kAccentColor = Color.fromARGB(255, 49, 49, 49);
 
   static var mySystemTheme = SystemUiOverlayStyle.light
-      .copyWith(systemNavigationBarColor: Color(0xFF28292E));
+      .copyWith(systemNavigationBarColor: Color.fromARGB(255, 255, 255, 255));
 
   TextStyle thefirNameStyle = TextStyle();
 
   ThemeData basicTheme() => ThemeData(
-        brightness: Brightness.dark,
+        brightness: Brightness.light,
         primaryColor: kPrimaryColor,
 
         iconTheme: const IconThemeData(
-          color: Colors.white,
+          color: Color.fromARGB(255, 97, 97, 97),
         ),
 
         elevatedButtonTheme: ElevatedButtonThemeData(
             style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all(Colors.grey[900]),
+          backgroundColor: MaterialStateProperty.all(Color.fromARGB(255, 235, 235, 235)),
         )),
 
         textTheme: const TextTheme(
           bodyText2: TextStyle(
             fontFamily: 'PTSansNarrow',
             fontSize: 16,
-            color: Colors.white,
+            color: Color.fromARGB(255, 46, 46, 46),
           ),
           //Освоено
           bodyText1: TextStyle(

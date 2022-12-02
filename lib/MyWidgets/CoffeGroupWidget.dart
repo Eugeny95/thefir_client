@@ -23,6 +23,8 @@ class _CoffeGroupWidgetState extends State<CoffeGroupWidget> {
   int i = -2;
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
     i = -2;
     cof = [];
     if (dishes != null) {
@@ -31,9 +33,38 @@ class _CoffeGroupWidgetState extends State<CoffeGroupWidget> {
       }
     }
     return Column(mainAxisAlignment: MainAxisAlignment.start, children: [
-      Divider(),
-      Text(name),
-      Divider(),
+      Padding(padding: EdgeInsets.only(top: height * 0.01)),
+      
+      Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10.0),
+        ),
+        elevation: 10,
+        child:
+      Container(
+        width: width - (width * 0.01),
+              height: height / 20,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Color.fromARGB(255, 238, 238, 238),
+                
+              ),
+              child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(padding: EdgeInsets.only(top: height * 0.02)),
+                      Text(
+                        name,
+                        style: TextStyle(
+                          color: Color.fromARGB(206, 23, 23, 23),
+                          fontWeight: FontWeight.w500,
+                          fontSize: 17,
+                        ),
+                      ),
+                    ]),
+      )),
+      
       ListView.builder(
           padding: EdgeInsets.only(top: 1),
           itemCount: (cof.length / 2).ceil().toInt(),
