@@ -10,6 +10,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../Dialogs/infoBonuce.dart';
+
 class ProfilePage extends StatefulWidget {
   @override
   _ProfilePageState createState() {
@@ -40,6 +42,7 @@ class _ProfilePageState extends State<ProfilePage> {
       children: [
         Column(children: [
           Stack( children: <Widget>[
+            
           Container(
               height: height / 3,
               decoration: BoxDecoration(
@@ -284,6 +287,7 @@ class _ProfilePageState extends State<ProfilePage> {
             ]),
           ),
         ]),
+        
         Positioned(
             top: height / 3.4,
             left: width * 0.10,
@@ -307,7 +311,10 @@ class _ProfilePageState extends State<ProfilePage> {
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
+
+              
                             ]),
+                            
                         Row(
                           children: [
                             SizedBox(
@@ -322,7 +329,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(90.0),
                                     color: userProfile.bonuses>=1?
-                                     Color.fromARGB(232, 235, 223, 176):Color.fromARGB(255, 239, 239, 239)),
+                                     Color.fromARGB(164, 230, 190, 134):Color.fromARGB(255, 239, 239, 239)),
                                 child: Icon(IcoFontIcons.coffeeAlt, size: 40)),
                             SizedBox(
                               width: width / 50,
@@ -336,7 +343,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(90.0),
                                     color: userProfile.bonuses>=2?
-                                     Color.fromARGB(232, 235, 223, 176):Color.fromARGB(255, 239, 239, 239)),
+                                     Color.fromARGB(164, 230, 190, 134):Color.fromARGB(255, 239, 239, 239)),
                                 child: Icon(IcoFontIcons.coffeeAlt, size: 40)),
                             SizedBox(
                               width: width / 50,
@@ -350,7 +357,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(90.0),
                                     color: userProfile.bonuses>=3?
-                                     Color.fromARGB(232, 235, 223, 176):Color.fromARGB(255, 239, 239, 239)),
+                                     Color.fromARGB(164, 230, 190, 134):Color.fromARGB(255, 239, 239, 239)),
                                 child: Icon(IcoFontIcons.coffeeAlt, size: 40)),
                             SizedBox(
                               width: width / 50,
@@ -364,7 +371,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(90.0),
                                     color: userProfile.bonuses>=4?
-                                     Color.fromARGB(232, 235, 223, 176):Color.fromARGB(255, 239, 239, 239)),
+                                     Color.fromARGB(164, 230, 190, 134):Color.fromARGB(255, 239, 239, 239)),
                                 child: Icon(IcoFontIcons.coffeeAlt, size: 40)),
                           ],
                         ),
@@ -382,7 +389,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(90.0),
                                     color: userProfile.bonuses>=5?
-                                     Color.fromARGB(232, 235, 223, 176):Color.fromARGB(255, 239, 239, 239)),
+                                     Color.fromARGB(164, 230, 190, 134):Color.fromARGB(255, 239, 239, 239)),
                                 child: Icon(IcoFontIcons.coffeeAlt, size: 40)),
                             SizedBox(
                               width: width / 50,
@@ -396,7 +403,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(90.0),
                                     color: userProfile.bonuses>=6?
-                                     Color.fromARGB(232, 235, 223, 176):Color.fromARGB(255, 239, 239, 239)),
+                                     Color.fromARGB(164, 230, 190, 134):Color.fromARGB(255, 239, 239, 239)),
                                 child: Icon(IcoFontIcons.coffeeAlt, size: 40)),
                             SizedBox(
                               width: width / 50,
@@ -410,7 +417,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(90.0),
                                     color: userProfile.bonuses>=7?
-                                     Color.fromARGB(232, 235, 223, 176):Color.fromARGB(255, 239, 239, 239)),
+                                     Color.fromARGB(164, 230, 190, 134):Color.fromARGB(255, 239, 239, 239)),
                                 child: Icon(IcoFontIcons.coffeeAlt, size: 40)),
                             SizedBox(
                               width: width / 50,
@@ -423,8 +430,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                     horizontal: 5, vertical: 5),
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(90.0),
-                                    color: userProfile.bonuses>=8?
-                                     Color.fromARGB(232, 235, 223, 176):Color.fromARGB(255, 239, 239, 239)),
+                                    color: userProfile.bonuses>8?
+                                     Color.fromARGB(164, 230, 190, 134):Color.fromARGB(255, 239, 239, 239)),
                                 child: Icon(IcoFontIcons.coffeeAlt, size: 40)),
                           ],
                         ),
@@ -432,7 +439,25 @@ class _ProfilePageState extends State<ProfilePage> {
                           height: height * 0.02,
                         )
                       ],
-                    ))))
+                    )))),Positioned(
+            top: height / 3.5,
+            left: width * 0.79,
+            child: 
+         IconButton(
+                  icon: Icon(Icons.info_outline_rounded,
+                  size: 20,
+                  color: Color.fromARGB(255, 103, 103, 103)),
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return InfoDialog(
+                            // Provider.of<CoffeHouse>(context, listen: true)
+                            //     .photos
+                            );
+                      },
+                    );
+                  })),
       ],
     );
   }

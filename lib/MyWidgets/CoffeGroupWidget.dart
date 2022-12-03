@@ -46,7 +46,7 @@ class _CoffeGroupWidgetState extends State<CoffeGroupWidget> {
               height: height / 20,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-                color: Color.fromARGB(255, 238, 238, 238),
+                color: Color.fromARGB(255, 245, 245, 245),
                 
               ),
               child: Row(

@@ -86,7 +86,7 @@ class _HomePageState extends State<HomePage> {
                 height: 15,
                 //child: Card(),
                 decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 234, 234, 234),
+                  color: Color.fromARGB(255, 236, 236, 236),
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(25),
                       topRight: Radius.circular(25)),

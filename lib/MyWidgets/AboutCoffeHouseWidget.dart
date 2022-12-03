@@ -22,17 +22,19 @@ class AboutCoffeHouseWidget extends StatelessWidget {
         ),
         semanticContainer: true,
         // clipBehavior: Clip.antiAliasWithSaveLayer,
-        elevation: 6,
+        elevation: 10,
         child: Column(children: [
           ListTile(
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(10),
                 topRight: Radius.circular(10),
+                bottomRight: Radius.circular(0),
+                    bottomLeft: Radius.circular(0),
                 //  bottomRight: Radius.circular(15),
                 // bottomLeft: Radius.circular(15))
               )),
-              tileColor: Color.fromARGB(255, 221, 221, 221),
+              tileColor: Color.fromARGB(58, 151, 151, 151),
               title: Column(children: [
                 Row(children: [
                   //GestureDetector(
@@ -70,12 +72,14 @@ class AboutCoffeHouseWidget extends StatelessWidget {
                               );
                             }
                           }),
-                ])
+                ]),
+                
               ])),
+            
           GestureDetector(
             onTap: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => MapPage()));
+              // Navigator.push(
+              //     context, MaterialPageRoute(builder: (context) => MapPage()));
             },
             child: Container(
               width: width - (width * 0.01),
@@ -86,7 +90,7 @@ class AboutCoffeHouseWidget extends StatelessWidget {
                     topRight: Radius.circular(0),
                     bottomRight: Radius.circular(10),
                     bottomLeft: Radius.circular(10)),
-                color: Color.fromARGB(90, 156, 156, 156),
+                color: Color.fromARGB(58, 151, 151, 151),
               ),
               child: Column(children: [
                 Row(
@@ -138,7 +142,7 @@ class AboutCoffeHouseWidget extends StatelessWidget {
                               height: height / 22,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
-                                color: Colors.black,
+                                color: Color.fromARGB(255, 255, 255, 255),
                                 image: DecorationImage(
                                     image: AssetImage("assets/images/2GIS.png"),
                                     fit: BoxFit.cover),
