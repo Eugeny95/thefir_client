@@ -42,7 +42,7 @@ class SelectDishDialogState extends State<SelectDishDialog> {
         ),
         Text(dish.options[i].price.toString()),
         Checkbox(
-          activeColor: Colors.red,
+          activeColor: Color.fromARGB(255, 89, 89, 89),
           value: dish.options[i].isSelected,
           onChanged: (value) {
             setState(() {
@@ -108,12 +108,16 @@ class SelectDishDialogState extends State<SelectDishDialog> {
               )),
               Divider(color: Colors.black),
               dish.description.isNotEmpty
-                  ? Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  ? Column(mainAxisAlignment: MainAxisAlignment.center, children: [
                       Text(
                         'Описание: ',
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
-                      Text(dish.description)
+                      Container(
+                        height: height / 12,
+                      child: Flexible(
+      child: 
+                      Text(dish.description)))
                     ])
                   : Row(),
               dish.description.isNotEmpty

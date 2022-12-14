@@ -133,7 +133,7 @@ class _PositionWidgetState extends State<PositionWidget> {
                                 itemBuilder: (BuildContext context, int index) {
                                   return coffe.options[index].isSelected
                                       ? Text(coffe.options[index].name)
-                                      : Text(coffe.options[index].name);
+                                      :Column();
                                 }),
                             flex: 6,
                           ),

@@ -75,15 +75,12 @@ class OrderDetailsPageState extends State<OrderDetailsPage> {
                         shrinkWrap: true,
                         itemCount: line.options.length,
                         itemBuilder: (BuildContext context, int index) {
-                          return line.options[index].isSelected
+                          return (line.options[index].isSelected)
                               ? Text(line.options[index].name,
                                   textAlign: TextAlign.right,
                                   style: TextStyle(
-                                      color: Color.fromARGB(255, 255, 255, 255), fontSize: 15))
-                              : Text(line.options[index].name,
-                                  textAlign: TextAlign.right,
-                                  style: TextStyle(
-                                      color: Color.fromARGB(255, 255, 255, 255), fontSize: 15));
+                                      color: Color.fromARGB(255, 1, 1, 1), fontSize: 15))
+                              : Column();
                         })),
                 
               ],

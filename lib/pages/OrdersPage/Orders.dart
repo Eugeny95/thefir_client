@@ -1,38 +1,53 @@
-import 'package:coffe/MyWidgets/OrderPreview.dart';
-import 'package:coffe/controllers/OrdersController.dart';
 import 'package:coffe/controllers/OrdersObject.dart';
+import 'package:coffe/pages/BasketPage/OrderPage.dart';
+import 'package:coffe/utils/payments/SberAcquiring.dart';
+import '../../MyWidgets/OrderPreview.dart';
+import '../../MyWidgets/PositionWidget.dart';
+import '../../controllers/OrdersController.dart';
+import '/controllers/BasketObject.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class OrderPage extends StatefulWidget {
-  OrderPage({Key? key}) : super(key: key);
 
+class StorePage extends StatefulWidget {
   @override
-  State<OrderPage> createState() => _OrderPageState();
+  State<StatefulWidget> createState() {
+    
+    // TODO: implement createState
+    return StorePageState();
+  }
 }
 
-class _OrderPageState extends State<OrderPage> {
-  final focusKey = ValueKey('focus');
+class StorePageState extends State<StorePage> {
+  
   @override
   Widget build(BuildContext context) {
-    OrderController _orderController =
-        Provider.of<OrderController>(context, listen: true);
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
-    List<OrderPreview> orders = [];
+    BasketObject basket = Provider.of<BasketObject>(context);
+        OrderController _orderController =  Provider.of<OrderController>(context, listen: true);
+
+    List<Widget> positions = [];
+     List<OrderPreview> orders = [];
     for (int i = 0; i < _orderController.historyOrders.length; i++) {
       orders.add(OrderPreview(
-        _orderController.activeOrders[i],
+        _orderController.historyOrders[i],
         key: UniqueKey(),
       ));
     }
-    return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          title: Text('История заказов',
-          style: TextStyle(color: Colors.black)),
-        ),
-        body: ListView(children: orders));
+    for (var item in basket.coffePositions) {
+      positions.add(PositionWidget(coffe: item, key: UniqueKey()));
+    }
+    
+      return Scaffold(
+          appBar: AppBar(
+            backgroundColor: Colors.white,
+            title: Text('История заказов',
+            style: TextStyle(color: Colors.black))),
+          body: ListView(
+            children: [Column(children: positions), Column(children: orders,)],
+          ));
+    }
+    // TODO: implement build
   }
-}
+
+

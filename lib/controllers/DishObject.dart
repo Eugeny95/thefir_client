@@ -108,8 +108,10 @@ class DishObject with ChangeNotifier {
     fieldSelection =
         FieldSelection.fromJson(jsonEncode(jsonMap['field_selection']));
 
+  
     List<dynamic> temp = jsonMap['options'];
     options = temp.map((e) => (Option.fromJson(jsonEncode(e)))).toList();
+    
   }
 
   DishObject getDeepCopy() {

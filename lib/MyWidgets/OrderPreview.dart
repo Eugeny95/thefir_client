@@ -21,8 +21,11 @@ class _OrderPreviewState extends State<OrderPreview> {
     double width = MediaQuery.of(context).size.width;
 
     return Container(
-        height: height * 0.27,
-        width: width * 0.98,
+         constraints: BoxConstraints(
+    minHeight: height * 0.27,
+        minWidth: width * 0.98,
+),
+        
         child: Card(
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.only(

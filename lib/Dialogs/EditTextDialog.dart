@@ -26,11 +26,16 @@ class _EditTextDialogState extends State<EditTextDialog> {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(20)),
       ),
-        title: Text(''),
+        
         content: Container(
-          
           height: height * 0.1,
-          child:Column(children: [Text('$caption'), TextFormField(
+          child:Column(children: [Text('$caption',
+          style: TextStyle(
+            fontWeight: FontWeight.bold, 
+            color: Color.fromARGB(216, 84, 84, 84)
+          )),
+          Padding(padding: EdgeInsets.only(top: height * 0.007)),
+           TextFormField(
                         cursorColor: Color.fromARGB(255, 97, 97, 97),
                         controller: TextEditingController()..text = text,
 

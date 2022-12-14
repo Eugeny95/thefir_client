@@ -31,7 +31,8 @@ import 'pages/BasketPage/BasketPage.dart';
 //я это смог
 void main() async {
   await Hive.initFlutter();
-  runApp(MyApp());
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
+      .then((value) => runApp(MyApp()));
 }
 
 class MyApp extends StatefulWidget {
@@ -73,15 +74,15 @@ class _MyAppState extends State<MyApp> {
           debugShowCheckedModeBanner: false,
           theme: MyTheme().basicTheme(),
           home: page,
-          //AnimatedSplashScreen(
-               //splash: Image.asset("assets/thefir.png"),
-              //   splashIconSize: 200,
-              //   nextScreen: page,
-              //   duration: 2000,
-              //   backgroundColor: Color.fromARGB(255, 255, 255, 255),
-              //   splashTransition: SplashTransition.fadeTransition,
-              //   pageTransitionType: PageTransitionType.fade,
-              // )
+          // AnimatedSplashScreen(
+          //      splash: Image.asset("assets/thefir.png"),
+          //       splashIconSize: 200,
+          //       nextScreen: page,
+          //       duration: 2000,
+          //       backgroundColor: Color.fromARGB(255, 255, 255, 255),
+          //       splashTransition: SplashTransition.fadeTransition,
+          //       pageTransitionType: PageTransitionType.fade,
+          //     )
         ));
   }
 }
@@ -103,6 +104,8 @@ class MyWidget extends State {
         case 2:
           Provider.of<OrderController>(context, listen: false)
               .getActiveOrders();
+              Provider.of<OrderController>(context, listen: false)
+              .getHistoryOrders();
           break;
         case 3:
           Provider.of<UserProfile>(context, listen: false).requestUserData();
@@ -114,7 +117,7 @@ class MyWidget extends State {
   }
 
   int index = 0;
-  List<Widget> Screens = [HomePage(), BasketPage(), OrderPage(), ProfilePage()];
+  List<Widget> Screens = [HomePage(), BasketPage(), StorePage(), ProfilePage()];
 
   @override
   Widget build(BuildContext context) {

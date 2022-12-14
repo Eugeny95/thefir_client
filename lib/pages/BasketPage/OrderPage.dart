@@ -1,3 +1,4 @@
+import 'package:coffe/controllers/OrdersController.dart';
 import 'package:coffe/controllers/OrdersObject.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -277,6 +278,7 @@ class OrderPageState extends State<OrderPage> {
                   [];
               Provider.of<BasketObject>(context, listen: false)
                   .notifyListeners();
+                   Provider.of<OrderController>(context, listen: false).getActiveOrders();
               Navigator.pop(context);
             },
           )

@@ -9,6 +9,7 @@ class NetworkConfiguration {
     'client': '/controllers/client',
     'order': "/controllers/order",
     'active_orders': '/controllers/active_orders_by_user_id',
+    'history_orders': '/controllers/history_orders_by_user_id',
     'coffes': "/controllers/coffes",
     'coffe': "/controllers/coffe",
     'coffehouse': "/controllers/coffehouse",

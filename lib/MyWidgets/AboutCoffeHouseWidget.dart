@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../Dialogs/TimeDialog.dart';
 import '../pages/HomePage/MapPage.dart';
 
 class AboutCoffeHouseWidget extends StatelessWidget {
@@ -24,6 +25,8 @@ class AboutCoffeHouseWidget extends StatelessWidget {
         // clipBehavior: Clip.antiAliasWithSaveLayer,
         elevation: 10,
         child: Column(children: [
+          
+                
           ListTile(
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.only(
@@ -42,12 +45,31 @@ class AboutCoffeHouseWidget extends StatelessWidget {
                       //onTap: () async {
                        // print("object");
                      // }),
-                  Text(
+                     Text(
                     'Thefir coffe',
                     style: TextStyle(fontWeight: FontWeight.bold,
                     color: Color.fromARGB(255, 46, 46, 46),
                     fontSize: 20),
                   ),
+                  
+                  IconButton(
+                    padding: EdgeInsets.zero,
+    constraints: BoxConstraints(),
+                  icon: Icon(Icons.access_time,
+                  size: 15,
+                  color: Color.fromARGB(255, 0, 0, 0)),
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return TimeDialog(
+                            // Provider.of<CoffeHouse>(context, listen: true)
+                            //     .photos
+                            );
+                      },
+                    );
+                  }),
+             
                 ]),
                 Row(children: [
                   Text(
@@ -75,6 +97,7 @@ class AboutCoffeHouseWidget extends StatelessWidget {
                 ]),
                 
               ])),
+            
             
           GestureDetector(
             onTap: () {
@@ -142,7 +165,7 @@ class AboutCoffeHouseWidget extends StatelessWidget {
                               height: height / 22,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
-                                color: Color.fromARGB(255, 255, 255, 255),
+                                color: Color.fromARGB(218, 247, 247, 247),
                                 image: DecorationImage(
                                     image: AssetImage("assets/images/2GIS.png"),
                                     fit: BoxFit.cover),

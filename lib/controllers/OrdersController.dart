@@ -24,6 +24,7 @@ class OrderController with ChangeNotifier {
 
   OrderController() {
     periodicUpdate();
+    
   }
 
   
@@ -35,8 +36,6 @@ class OrderController with ChangeNotifier {
           List<dynamic> json = jsonDecode(data);
           activeOrders =
               json.map((e) => OrderObject.fromJson(jsonEncode(e))).toList();
-
-          print('updated');
           notifyListeners();
         },
         onError: ({required int statusCode}) {
