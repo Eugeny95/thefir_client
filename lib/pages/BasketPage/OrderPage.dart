@@ -53,7 +53,7 @@ class OrderPageState extends State<OrderPage> {
               ),
             ]),
             Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Expanded(
                     flex: 1,
@@ -73,10 +73,7 @@ class OrderPageState extends State<OrderPage> {
                                   textAlign: TextAlign.right,
                                   style: TextStyle(
                                       color: Color.fromARGB(255, 97, 97, 97), fontSize: 15))
-                              : Text(line.options[index].name,
-                                  textAlign: TextAlign.right,
-                                  style: TextStyle(
-                                      color: Color.fromARGB(255, 255, 255, 255), fontSize: 15));
+                              : Column();
                         })),
               ],
             ),

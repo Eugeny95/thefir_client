@@ -73,16 +73,16 @@ class _MyAppState extends State<MyApp> {
           title: 'Flutter Demo',
           debugShowCheckedModeBanner: false,
           theme: MyTheme().basicTheme(),
-          home: page,
-          // AnimatedSplashScreen(
-          //      splash: Image.asset("assets/thefir.png"),
-          //       splashIconSize: 200,
-          //       nextScreen: page,
-          //       duration: 2000,
-          //       backgroundColor: Color.fromARGB(255, 255, 255, 255),
-          //       splashTransition: SplashTransition.fadeTransition,
-          //       pageTransitionType: PageTransitionType.fade,
-          //     )
+          home: 
+          AnimatedSplashScreen(
+               splash: Image.asset("assets/thefir.png"),
+                splashIconSize: 200,
+                nextScreen: page,
+                duration: 2000,
+                backgroundColor: Color.fromARGB(255, 255, 255, 255),
+                splashTransition: SplashTransition.fadeTransition,
+                pageTransitionType: PageTransitionType.fade,
+              )
         ));
   }
 }

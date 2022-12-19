@@ -1,7 +1,7 @@
 import 'package:coffe/controllers/OrdersObject.dart';
 import 'package:coffe/pages/BasketPage/OrderPage.dart';
 import 'package:coffe/utils/payments/SberAcquiring.dart';
-import '../../MyWidgets/OrderPreview.dart';
+import '../../MyWidgets/HistoryPreview.dart';
 import '../../MyWidgets/PositionWidget.dart';
 import '../../controllers/OrdersController.dart';
 import '/controllers/BasketObject.dart';
@@ -27,9 +27,9 @@ class StorePageState extends State<StorePage> {
         OrderController _orderController =  Provider.of<OrderController>(context, listen: true);
 
     List<Widget> positions = [];
-     List<OrderPreview> orders = [];
+     List<HistoryPreview> orders = [];
     for (int i = 0; i < _orderController.historyOrders.length; i++) {
-      orders.add(OrderPreview(
+      orders.add(HistoryPreview(
         _orderController.historyOrders[i],
         key: UniqueKey(),
       ));
