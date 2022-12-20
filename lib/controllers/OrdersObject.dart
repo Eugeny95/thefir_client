@@ -13,6 +13,7 @@ class OrderObject with ChangeNotifier {
   String requiredDateTime = '';
   bool isComplete = false;
   bool isAccepted = false;
+  bool isReady = false;
   double totalCost = 0.0;
   List<DishObject> unpackedCoffe = [];
 
@@ -47,6 +48,7 @@ class OrderObject with ChangeNotifier {
     Map<String, dynamic> jsonMap = jsonDecode(json);
     idPayment = jsonMap['id_payment'];
     ids = jsonMap['id'];
+    isReady = jsonMap['is_ready'];
 
     requiredDateTime = jsonMap['required_datetime'];
 

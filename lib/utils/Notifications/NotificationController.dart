@@ -32,7 +32,7 @@ class NotificationController {
     print('inited');
   }
 
-  void showNotification() async {
+  void showNotification(String titles, String bodys) async {
     bool isallowed = await AwesomeNotifications().isNotificationAllowed();
     print(isallowed);
     AwesomeNotifications().createNotification(
@@ -40,8 +40,8 @@ class NotificationController {
       //simgple notification
       id: 123,
       channelKey: 'basic', //set configuration wuth key "basic"
-      title: 'Макс',
-      body: 'ПРИВЕД!',
+      title: titles,
+      body: bodys,
 
       //largeIcon: 'asset://assets/images/elephant.jpg',
       //large icon will be displayed at right side

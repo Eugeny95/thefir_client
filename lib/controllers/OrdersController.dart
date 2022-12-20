@@ -9,6 +9,7 @@ import 'package:socket_io_client/socket_io_client.dart';
 
 import '../utils/Network/RestController.dart';
 import '../utils/Security/Auth.dart';
+import 'package:coffe/utils/Notifications/NotificationController.dart';
 
 class OrderController with ChangeNotifier {
   late IO.Socket socket;
@@ -36,6 +37,11 @@ class OrderController with ChangeNotifier {
           List<dynamic> json = jsonDecode(data);
           activeOrders =
               json.map((e) => OrderObject.fromJson(jsonEncode(e))).toList();
+          for (var order in activeOrders){
+            if (order.isReady){
+              NotificationController().showNotification('Статус заказа', 'Ваш заказ готов!');
+            }
+          }
           notifyListeners();
         },
         onError: ({required int statusCode}) {

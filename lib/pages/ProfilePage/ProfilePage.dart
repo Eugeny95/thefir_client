@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:coffe/Dialogs/EditTextDialog.dart';
+import 'package:coffe/Dialogs/infoBonuce.dart';
 import 'package:coffe/MyWidgets/ViewEditText.dart';
 import 'package:coffe/controllers/UserProfileObject.dart';
 import 'package:coffe/main.dart';
@@ -10,7 +11,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../Dialogs/InfoBonuce.dart';
+
 
 class ProfilePage extends StatefulWidget {
   @override
